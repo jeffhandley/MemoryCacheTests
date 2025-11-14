@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MemoryCacheTests": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}

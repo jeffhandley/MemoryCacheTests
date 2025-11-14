@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0;net9.0-windows;net10.0;net10.0-windows</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-windows' or '$(TargetFramework)' == 'net10.0-windows'">
+    <MemoryCachePackageVersion>9.0.11</MemoryCachePackageVersion>
+    <DefineConstants>$(DefineConstants);MEMORYCACHE_9</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0' or '$(TargetFramework)' == 'net10.0'">
+    <MemoryCachePackageVersion>10.0.0</MemoryCachePackageVersion>
+    <DefineConstants>$(DefineConstants);MEMORYCACHE_10</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0' or '$(TargetFramework)' == 'net9.0-windows'">
+    <LangVersion>13</LangVersion>
+    <DefineConstants>$(DefineConstants);LANGVER_13</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0' or '$(TargetFramework)' == 'net10.0-windows'">
+    <LangVersion>14</LangVersion>
+    <DefineConstants>$(DefineConstants);LANGVER_14</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="msbuild.binlog" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="$(MemoryCachePackageVersion)" />
+    <PackageReference Include="FluentAssertions" Version="8.8.0" />
+    <PackageReference Include="MSTest" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+</Project>
